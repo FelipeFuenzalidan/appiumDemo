@@ -13,7 +13,8 @@
         <serenity.version>1.4.0</serenity.version>
         <serenity.maven.version>1.4.0</serenity.maven.version>
         <webdriver.driver>appium</webdriver.driver>
-        <testEnvironment>ios</testEnvironment>
+        <testPlatform>ios</testPlatform>
+        <testEnvironment>init</testEnvironment>
     </properties>
 
     <dependencies>
@@ -101,7 +102,8 @@
                         <include>**/*.java</include>
                     </includes>
                     <systemPropertyVariables>
-                        <properties>./src/test/resources/serenity.${testEnvironment}.properties</properties>
+                        <properties>./src/test/resources/serenity.${testPlatform}.properties</properties>
+                        <testPlatform>${testPlatform}</testPlatform>
                         <testEnvironment>${testEnvironment}</testEnvironment>
                         <enableSerenity>true</enableSerenity>
                     </systemPropertyVariables>

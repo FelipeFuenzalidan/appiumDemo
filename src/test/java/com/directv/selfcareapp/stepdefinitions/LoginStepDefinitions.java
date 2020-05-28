@@ -2,7 +2,6 @@ package com.directv.selfcareapp.stepdefinitions;
 
 import com.directv.selfcareapp.pages.BasePage;
 import com.directv.selfcareapp.steps.LoginSteps;
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.*;
 import net.thucydides.core.annotations.Steps;
