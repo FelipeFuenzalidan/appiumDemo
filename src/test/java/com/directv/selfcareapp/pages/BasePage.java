@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utils.ConfigurationReader;
 
 public class BasePage extends PageObject {
     public static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
@@ -40,23 +41,27 @@ public class BasePage extends PageObject {
         return element;
     }
 
-    public boolean isDisplayed(WebElement element) {
-        return waitForElement(element, 20).isDisplayed();
+    public int timeout(){
+        return Integer.parseInt(ConfigurationReader.getProperty("serenity.timeout"));
     }
 
-    public boolean isPresent(WebElement element){
-        return waitForElement(element, 20) != null;
+    public boolean isDisplayed(WebElement element) {
+        return waitForElement(element, timeout()).isDisplayed();
+    }
+
+    public String getText(WebElement element){
+        return waitForElement(element, timeout()).getText();
     }
 
     public void type(WebElement element, String text) {
         if(isDisplayed(element)){
-            waitForElement(element, 20).sendKeys(text);
+            waitForElement(element, timeout()).sendKeys(text);
         }
     }
 
     public void tap(WebElement element) {
         if(isDisplayed(element)) {
-            waitForElement(element, 20).click();
+            waitForElement(element, timeout()).click();
         }
     }
 

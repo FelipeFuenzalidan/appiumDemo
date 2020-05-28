@@ -9,7 +9,8 @@ import org.openqa.selenium.WebDriver;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-html-report"},
-        features = {"src/test/resources/features/login.feature"}
+        features = {"src/test/resources/features/login.feature"},
+        glue = {"com.directv.selfcareapp.stepdefinitions"}
 )
 public class LoginRunner {
 

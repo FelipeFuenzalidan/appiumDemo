@@ -5,7 +5,7 @@ Feature: Login Test
 
   @Login
   Scenario Outline: Login test with wrong password for the prepaid and postpaid user
-    When I login the <username> and <password>
+    Given I login the <username> and <password>
     Then I verify that the user login successful
 
     Examples:
@@ -23,4 +23,7 @@ Feature: Login Test
     Then I verify that it is on WhatsApp
 
 
-
+  @ios
+  Scenario: Test IOS
+    When I type posact1@gmail.com in the field username
+    Then I verify that the username is posact1@gmail.com

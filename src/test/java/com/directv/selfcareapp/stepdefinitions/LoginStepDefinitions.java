@@ -34,11 +34,6 @@ public class LoginStepDefinitions {
         loginSteps.LoginUser(username, password);
     }
 
-    @Then("^I verify that the message is displayed$")
-    public void IVerifyThatTheMessageIsDisplayed(){
-        loginSteps.verifyDisplayedMsgFailedLogin();
-    }
-
     @Then("^I verify that the user login successful$")
     public void IVerifyThatTheUserLoginSuccessful(){
         loginSteps.verifyLoginSuccessful();
@@ -57,6 +52,17 @@ public class LoginStepDefinitions {
     @Then("^I verify that it is on WhatsApp$")
     public void IVerifyThatItIsOnWhatsApp() throws InterruptedException {
         loginSteps.verifySuccessfulWhatsApp();
+    }
+
+    @When("I type (.*) in the field username")
+    public void ITypeUsernameInTheFieldusername(String username){
+        loginSteps.typeUsername(username);
+    }
+
+    @Then("I verify that the username is (.*)")
+    public void IVerifyThatTheUsername(String username){
+        loginSteps.verifyUsername(username);
+
     }
 
     @After

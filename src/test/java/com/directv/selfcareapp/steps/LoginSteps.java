@@ -5,7 +5,7 @@ import net.thucydides.core.annotations.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class LoginSteps {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginSteps.class);
@@ -20,12 +20,6 @@ public class LoginSteps {
         loginPage.typePasswordField(password);
         LOGGER.info("Tap in Ingresar button");
         loginPage.tapIngresarButton();
-    }
-
-    @Step
-    public void verifyDisplayedMsgFailedLogin(){
-        LOGGER.info("Verify is displayed message failed login");
-        loginPage.isDisplayedMsgFailedLogin();
     }
 
     @Step
@@ -57,5 +51,17 @@ public class LoginSteps {
     public void verifyLogout() {
         LOGGER.info("I verify that the logout successful");
         loginPage.logout();
+    }
+
+    @Step
+    public void typeUsername(String username){
+        LOGGER.info("type username");
+        loginPage.typeUsernameField(username);
+    }
+
+    @Step
+    public void verifyUsername(String username){
+        LOGGER.info("I verify the value username");
+        assertEquals("The" + username + "username does not exits.", loginPage.getValueUsername(), username);
     }
 }

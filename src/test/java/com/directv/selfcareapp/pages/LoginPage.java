@@ -7,23 +7,19 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends BasePage {
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"E-mail\")")
-    @iOSFindBy(xpath = "demo")
+    @iOSFindBy(xpath = "//XCUIElementTypeTextField[@name=\"login-username-field\"]")
     private WebElement usernameField;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Contraseña\")")
-    @iOSFindBy(xpath = "demo")
+    @iOSFindBy(xpath = "//XCUIElementTypeTextField[@name=\"login-password-field\"]")
     private WebElement passwordField;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"INGRESAR\")")
-    @iOSFindBy(xpath = "demo")
+    @iOSFindBy(xpath = "//XCUIElementTypeTextField[@name=\"login-submit-button\"]")
     private WebElement ingresarButton;
 
-    @AndroidFindBy(xpath = "//*[contains(@text, 'incorrectas')]")
-    @iOSFindBy(xpath = "demo")
-    private WebElement msgFailedLogin;
-
     @AndroidFindBy(xpath = "//*[contains(@text, 'PAGAR FACTURA')]")
-    @iOSFindBy(xpath = "demo")
+    @iOSFindBy(xpath = "//XCUIElementTypeTextField[@name=\"PAGAR FACTURA\"]")
     private WebElement pagarFacturaButton;
 
     @AndroidFindBy(xpath = "//*[contains(@text, 'Ayuda')]")
@@ -63,10 +59,6 @@ public class LoginPage extends BasePage {
         tap(ingresarButton);
     }
 
-    public void isDisplayedMsgFailedLogin(){
-        isDisplayed(msgFailedLogin);
-    }
-
     public void isDisplayedPagarFacturaButton(){
         isDisplayed(pagarFacturaButton);
     }
@@ -89,5 +81,9 @@ public class LoginPage extends BasePage {
         tap(misDatosMenu);
         tap(logoutButton);
         isDisplayed(iniciarSesionLabel);
+    }
+
+    public String getValueUsername(){
+        return getText(usernameField);
     }
 }
