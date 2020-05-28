@@ -13,6 +13,7 @@
         <serenity.version>1.4.0</serenity.version>
         <serenity.maven.version>1.4.0</serenity.maven.version>
         <webdriver.driver>appium</webdriver.driver>
+        <testEnvironment>ios</testEnvironment>
     </properties>
 
     <dependencies>
