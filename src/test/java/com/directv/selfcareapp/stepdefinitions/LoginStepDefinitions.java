@@ -62,11 +62,5 @@ public class LoginStepDefinitions {
     @Then("I verify that the username is (.*)")
     public void IVerifyThatTheUsername(String username){
         loginSteps.verifyUsername(username);
-
-    }
-
-    @After
-    public void tearDown(){
-        loginSteps.verifyLogout();
     }
 }
