@@ -15,6 +15,7 @@ public class BasePage extends PageObject {
     private static boolean isAndroid;
 
     public static void setAndroid(boolean android){
+
         isAndroid = android;
     }
 
@@ -22,8 +23,8 @@ public class BasePage extends PageObject {
         return isAndroid;
     }
 
-    public static void setIOS(boolean iOS){
-        isIOS = iOS;
+    public static void setIOS(boolean ios){
+        isIOS = ios;
     }
 
     public static boolean isIOS(){

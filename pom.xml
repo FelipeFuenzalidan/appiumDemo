@@ -13,8 +13,8 @@
         <serenity.version>1.4.0</serenity.version>
         <serenity.maven.version>1.4.0</serenity.maven.version>
         <webdriver.driver>appium</webdriver.driver>
-        <testPlatform>Android</testPlatform>
-        <testEnvironment>init</testEnvironment>
+        <testPlatform>android</testPlatform>
+        <testEnvironment>int</testEnvironment>
     </properties>
 
     <dependencies>

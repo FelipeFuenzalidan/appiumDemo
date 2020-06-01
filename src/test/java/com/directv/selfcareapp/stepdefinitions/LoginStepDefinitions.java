@@ -16,7 +16,7 @@ public class LoginStepDefinitions {
 
     @Before
     public void setPlatform() {
-        String platform =  System.getProperty("testEnvironment");
+        String platform =  System.getProperty("testPlatform");
         LOGGER.info("The platform is " + platform);
         if (platform.compareToIgnoreCase("android") == 0) {
             BasePage.setAndroid(true);
