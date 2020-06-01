@@ -64,4 +64,16 @@ public class LoginSteps {
         LOGGER.info("I verify the value username");
         assertEquals("The" + username + "username does not exits.", loginPage.getValueUsername(), username);
     }
+
+    @Step
+    public void logout(){
+        LOGGER.info("I logout in the app");
+        loginPage.logout();
+    }
+
+    @Step
+    public void swithAppDirectv(){
+        LOGGER.info("I switch to the Directv app");
+        loginPage.switchApp();
+    }
 }

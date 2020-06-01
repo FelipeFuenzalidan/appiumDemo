@@ -28,27 +28,27 @@ public class LoginStepDefinitions {
         }
     }
 
-    @Given("^I login the (.*) and (.*)$")
+    @Given("I login the (.*) and (.*)")
     public void ILoginTheUsernameAndPasswordFortheUserType(String username, String password){
         loginSteps.LoginUser(username, password);
     }
 
-    @Then("^I verify that the user login successful$")
+    @Then("I verify that the user login successful")
     public void IVerifyThatTheUserLoginSuccessful(){
         loginSteps.verifyLoginSuccessful();
     }
 
-    @When("^I press the Ayuda menu$")
+    @When("I press the Ayuda menu")
     public void IPressTheAyudaMenu(){
         loginSteps.enterAyudaMenu();
     }
 
-    @And("I press the Enviar Mensaje button$")
+    @And("I press the Whatsapp button")
     public void IPressTheEnviarMensajeButton(){
         loginSteps.enterWhatsApp();
     }
 
-    @Then("^I verify that it is on WhatsApp$")
+    @Then("I verify that it is on WhatsApp")
     public void IVerifyThatItIsOnWhatsApp() throws InterruptedException {
         loginSteps.verifySuccessfulWhatsApp();
     }
@@ -61,5 +61,15 @@ public class LoginStepDefinitions {
     @Then("I verify that the username is (.*)")
     public void IVerifyThatTheUsername(String username){
         loginSteps.verifyUsername(username);
+    }
+
+    @And("I logout in the Directv app")
+    public void ILogoutInTheSpp(){
+        loginSteps.logout();
+    }
+
+    @And("I switch to the Directv app")
+    public void ISwitchToTheDirectvApp(){
+        loginSteps.swithAppDirectv();
     }
 }

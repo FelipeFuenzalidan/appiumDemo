@@ -7,6 +7,7 @@ Feature: Login Test
   Scenario Outline: Login test with wrong password for the prepaid and postpaid user
     Given I login the <username> and <password>
     Then I verify that the user login successful
+    And I logout in the Directv app
 
     Examples:
       | username          | password |
@@ -19,8 +20,10 @@ Feature: Login Test
     Given I login the posact1@gmail.com and posact1
     Then I verify that the user login successful
     When I press the Ayuda menu
-    And I press the Enviar Mensaje button
+    And I press the Whatsapp button
     Then I verify that it is on WhatsApp
+    And I switch to the Directv app
+    And I logout in the Directv app
 
 
   @ios

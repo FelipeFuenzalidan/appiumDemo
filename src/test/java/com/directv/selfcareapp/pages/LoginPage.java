@@ -26,7 +26,7 @@ public class LoginPage extends BasePage {
     @iOSFindBy(xpath = "demo")
     private WebElement ayudaButton;
 
-    @AndroidFindBy(xpath = "//*[contains(@text, 'ENVIAR MENSAJE')]")
+    @AndroidFindBy(xpath = "//*[contains(@text, 'Whatsapp')]")
     @iOSFindBy(xpath = "demo")
     private WebElement enviarMensajeButton;
 
@@ -34,11 +34,11 @@ public class LoginPage extends BasePage {
     @iOSFindBy(xpath = "demo")
     private WebElement urlWhatsApp;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Mis datos\")")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Perfil\")")
     @iOSFindBy(xpath = "demo")
-    private WebElement misDatosMenu;
+    private WebElement perfil;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"LOGOUT\")")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"CERRAR SESIÓN\")")
     @iOSFindBy(xpath = "demo")
     private WebElement logoutButton;
 
@@ -68,7 +68,6 @@ public class LoginPage extends BasePage {
     }
 
     public void tapEnviarMensajeButton(){
-        swipeUp();
         tap(enviarMensajeButton);
     }
 
@@ -78,12 +77,16 @@ public class LoginPage extends BasePage {
     }
 
     public void logout(){
-        tap(misDatosMenu);
+        tap(perfil);
         tap(logoutButton);
         isDisplayed(iniciarSesionLabel);
     }
 
     public String getValueUsername(){
         return getText(usernameField);
+    }
+
+    public void swicthAppDirectv(){
+        switchApp();
     }
 }
