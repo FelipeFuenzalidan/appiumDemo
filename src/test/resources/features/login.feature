@@ -26,7 +26,6 @@ Feature: Login Test
     And I logout in the Directv app
 
 
-  @ios
   @issue
   Scenario: Test IOS
     When I type "posact1@gmail.com" in the field username
