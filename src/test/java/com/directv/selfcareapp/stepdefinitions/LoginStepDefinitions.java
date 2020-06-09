@@ -2,8 +2,8 @@ package com.directv.selfcareapp.stepdefinitions;
 
 import com.directv.selfcareapp.pages.BasePage;
 import com.directv.selfcareapp.steps.LoginSteps;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.*;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.*;
 import net.thucydides.core.annotations.Steps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,12 +53,7 @@ public class LoginStepDefinitions {
         loginSteps.verifySuccessfulWhatsApp();
     }
 
-    @When("I type (.*) in the field username")
-    public void ITypeUsernameInTheFieldusername(String username){
-        loginSteps.typeUsername(username);
-    }
-
-    @Then("I verify that the username is (.*)")
+    @Then("I verify that the username is {string}")
     public void IVerifyThatTheUsername(String username){
         loginSteps.verifyUsername(username);
     }
@@ -71,5 +66,10 @@ public class LoginStepDefinitions {
     @And("I switch to the Directv app")
     public void ISwitchToTheDirectvApp(){
         loginSteps.swithAppDirectv();
+    }
+
+    @When("I type {string} in the field username")
+    public void iTypeInTheFieldUsername(String username) {
+        loginSteps.typeUsername(username);
     }
 }
