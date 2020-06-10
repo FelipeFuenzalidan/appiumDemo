@@ -28,7 +28,7 @@ public class LoginStepDefinitions {
         }
     }
 
-    @Given("I login the (.*) and (.*)")
+    @Given("I login the {string} and {string}")
     public void ILoginTheUsernameAndPasswordFortheUserType(String username, String password){
         loginSteps.LoginUser(username, password);
     }

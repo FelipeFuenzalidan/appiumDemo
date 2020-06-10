@@ -5,7 +5,7 @@ Feature: Login Test
 
   @Login
   Scenario Outline: Login test with wrong password for the prepaid and postpaid user
-    Given I login the <username> and <password>
+    Given I login the "<username>" and "<password>"
     Then I verify that the user login successful
     And I logout in the Directv app
 
@@ -17,7 +17,7 @@ Feature: Login Test
 
   @WhatsApp
   Scenario: Whatshap Test
-    Given I login the posact1@gmail.com and posact1
+    Given I login the "posact1@gmail.com" and "posact1"
     Then I verify that the user login successful
     When I press the Ayuda menu
     And I press the Whatsapp button
