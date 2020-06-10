@@ -77,16 +77,6 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-jira-requirements-provider</artifactId>
-            <version>1.12.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-jira-plugin</artifactId>
-            <version>1.12.0</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
