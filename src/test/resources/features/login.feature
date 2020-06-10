@@ -1,6 +1,5 @@
 @Complete
-Feature: Login Test
-
+Feature: Login Automation Test
   Login Test for prepaid and postpaid users
 
   @Login
@@ -16,7 +15,7 @@ Feature: Login Test
 
 
   @WhatsApp
-  Scenario: Whatshap Test
+  Scenario: Verify Whatshapp Test
     Given I login the "posact1@gmail.com" and "posact1"
     Then I verify that the user login successful
     When I press the Ayuda menu
@@ -27,7 +26,6 @@ Feature: Login Test
 
 
   @ios
-  @issue:SCA-5
-  Scenario: Test IOS
+  Scenario: Verify iOS Test
     When I type "posact1@gmail.com" in the field username
     Then I verify that the username is "posact1@gmail.com"
