@@ -8,7 +8,8 @@ import org.openqa.selenium.WebDriver;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-html-report", "junit:target/cucumber-reports/Cucumber.xml"},
+        plugin = {"pretty", "junit:target/seflcareapp-reports/seflcareapp-report.xml",
+        "json:target/seflcareapp-reports/seflcareapp-report.json"},
         features = {"src/test/resources/features/login.feature"}
 )
 public class LoginRunner {
