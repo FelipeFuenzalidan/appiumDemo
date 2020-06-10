@@ -27,6 +27,7 @@ Feature: Login Test
 
 
   @ios
+  @issue:SCA-5
   Scenario: Test IOS
     When I type "posact1@gmail.com" in the field username
     Then I verify that the username is "posact1@gmail.com"
