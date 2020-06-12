@@ -78,6 +78,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -105,11 +106,16 @@
                         <include>**/*.java</include>
                     </includes>
                     <systemPropertyVariables>
-                        <properties>./src/test/resources/serenity.${testPlatform}.properties</properties>
+                        <properties>./src/test/resources/serenity.${testPlatform}-${surefire.forkNumber}.properties</properties>
                         <testPlatform>${testPlatform}</testPlatform>
+                        <testDatabaseProperties>./src/test/resources/${testEnvironment}.database.properties</testDatabaseProperties>
                         <testEnvironment>${testEnvironment}</testEnvironment>
                         <enableSerenity>true</enableSerenity>
                     </systemPropertyVariables>
+                    <parallel>suitesAndClasses</parallel>
+                    <threadCount>2</threadCount>
+                    <forkCount>2</forkCount>
+                    <reuseForks>true</reuseForks>
                 </configuration>
                 <executions>
                     <execution>
