@@ -108,7 +108,6 @@
                     <systemPropertyVariables>
                         <properties>./src/test/resources/serenity.${testPlatform}-${surefire.forkNumber}.properties</properties>
                         <testPlatform>${testPlatform}</testPlatform>
-                        <testDatabaseProperties>./src/test/resources/${testEnvironment}.database.properties</testDatabaseProperties>
                         <testEnvironment>${testEnvironment}</testEnvironment>
                         <enableSerenity>true</enableSerenity>
                     </systemPropertyVariables>
