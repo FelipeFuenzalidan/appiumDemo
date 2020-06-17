@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
         "json:target/seflcareapp-reports/seflcareapp-report.json"},
         features = {"src/test/resources/features/login.feature"}
 )
-public class LoginRunner {
+public class ParallelLoginRunnerDevice1 {
 
     @Managed
     WebDriver driver;

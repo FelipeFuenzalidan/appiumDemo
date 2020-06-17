@@ -7,57 +7,92 @@
     <groupId>SelfCareApp</groupId>
     <artifactId>com.directv.selfcareapp</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>SelfCareApp Framework Automation</name>
 
     <properties>
+        <java.version>1.8</java.version>
+        <java.source.version>${java.version}</java.source.version>
+        <java.target.version>${java.version}</java.target.version>
+        <maven.version>3.6.2</maven.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>2.2.7</serenity.version>
-        <serenity.maven.version>2.2.7</serenity.maven.version>
-        <serenity.cucumber.version>2.2.2</serenity.cucumber.version>
+        <serenity.version>2.0.48</serenity.version>
+        <serenity.maven.version>2.0.67</serenity.maven.version>
+        <serenity.cucumber.version>1.9.37</serenity.cucumber.version>
+        <browserstack.local.version>1.0.3</browserstack.local.version>
+        <maven.failsafe-plugin.version>3.0.0-M3</maven.failsafe-plugin.version>
+        <maven.surefire-plugin.version>3.0.0-M3</maven.surefire-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
+        <maven.compiler-plugin.version>3.8.0</maven.compiler-plugin.version>
+        <jetty-io.version>9.4.12.v20180830</jetty-io.version>
+        <jetty-util.version>9.4.12.v20180830</jetty-util.version>
         <webdriver.driver>appium</webdriver.driver>
         <testPlatform>android</testPlatform>
         <testEnvironment>int</testEnvironment>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>serenity</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/serenity/maven</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>serenity</id>
+            <name>bintray-plugins</name>
+            <url>http://dl.bintray.com/serenity/maven</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencies>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-io</artifactId>
+            <version>${jetty-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util</artifactId>
+            <version>${jetty-util.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
             <version>${serenity.version}</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>browserstack-local-java</artifactId>
+            <version>${browserstack.local.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
             <version>${serenity.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-screenplay</artifactId>
+            <artifactId>serenity-rest-assured</artifactId>
             <version>${serenity.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-screenplay-webdriver</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-ensure</artifactId>
-            <version>${serenity.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-cucumber5</artifactId>
+            <artifactId>serenity-cucumber</artifactId>
             <version>${serenity.cucumber.version}</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>1.8.6</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -66,15 +101,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.6.2</version>
-            <scope>test</scope>
+            <groupId>com.googlecode.lambdaj</groupId>
+            <artifactId>lambdaj</artifactId>
+            <version>2.3.3</version>
         </dependency>
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>1.3</version>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.12.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -83,37 +117,46 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.2</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <configuration>
+                            <rules>
+                                <requireUpperBoundDeps/>
+                            </rules>
+                        </configuration>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
+                <version>${maven.surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.20</version>
+                <version>${maven.failsafe-plugin.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/*.java</include>
+                        <include>com.directv.selfcareapp.LoginRunner.java</include>
                     </includes>
-                    <systemPropertyVariables>
-                        <properties>./src/test/resources/serenity.${testPlatform}-${surefire.forkNumber}.properties</properties>
-                        <testPlatform>${testPlatform}</testPlatform>
-                        <testEnvironment>${testEnvironment}</testEnvironment>
-                        <enableSerenity>true</enableSerenity>
-                    </systemPropertyVariables>
-                    <parallel>suitesAndClasses</parallel>
-                    <threadCount>2</threadCount>
-                    <forkCount>2</forkCount>
                     <reuseForks>true</reuseForks>
                 </configuration>
                 <executions>
@@ -128,7 +171,7 @@
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
-                <version>${serenity.maven.version}</version>
+                <version>${serenity.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>net.serenity-bdd</groupId>
@@ -148,4 +191,59 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>device</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven.failsafe-plugin.version}</version>
+                        <configuration>
+                            <includes>
+                                <include>com.directv.selfcareapp.*Runner.java</include>
+                            </includes>
+                            <reuseForks>true</reuseForks>
+                            <systemPropertyVariables>
+                                <environment>single</environment>
+                                <taskID>MY_TEST_SCHEMA_${surefire.forkNumber}</taskID>
+                                <properties>./src/test/resources/serenity.${testPlatform}.properties</properties>
+                                <testPlatform>${testPlatform}</testPlatform>
+                                <testEnvironment>${testEnvironment}</testEnvironment>
+                                <enableSerenity>true</enableSerenity>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>multiDevice</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven.failsafe-plugin.version}</version>
+                        <configuration>
+                            <includes>
+                                <include>com.directv.selfcareapp.Parallel*.java</include>
+                            </includes>
+                            <systemPropertyVariables>
+                                <properties>./src/test/resources/serenity.${testPlatform}-${surefire.forkNumber}.properties</properties>
+                                <testPlatform>${testPlatform}</testPlatform>
+                                <testEnvironment>${testEnvironment}</testEnvironment>
+                                <enableSerenity>true</enableSerenity>
+                            </systemPropertyVariables>
+                            <parallel>suitesAndClasses</parallel>
+                            <threadCount>2</threadCount>
+                            <forkCount>2</forkCount>
+                            <reuseForks>true</reuseForks>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
