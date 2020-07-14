@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="70.541676">
+<testcase classname="Login Automation Test" name="Test Test" time="70.541676">
+<system-out><![CDATA[When I type "posact1@gmail.com" in the field username.......................passed
+]]></system-out>
+</testcase>
+</testsuite>

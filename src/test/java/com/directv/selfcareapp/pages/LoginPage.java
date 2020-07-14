@@ -1,13 +1,14 @@
 package com.directv.selfcareapp.pages;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"E-mail\")")
-    @iOSXCUITFindBy(iOSNsPredicate = "name = 'login-username-field'")
+    @AndroidFindBy(accessibility = "login-username-field")
+    @iOSFindBy(xpath = "//XCUIElementTypeTextField[@name='login-username-field']")
     private WebElement usernameField;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Contraseña\")")

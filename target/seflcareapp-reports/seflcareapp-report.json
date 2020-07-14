@@ -1,0 +1,69 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 57307741605,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginStepDefinitions.setPlatform()"
+            }
+          }
+        ],
+        "line": 7,
+        "name": "Test Test",
+        "description": "",
+        "id": "login-automation-test;test-test",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 13149341520,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I type \"posact1@gmail.com\" in the field username",
+            "match": {
+              "arguments": [
+                {
+                  "val": "posact1@gmail.com",
+                  "offset": 8
+                }
+              ],
+              "location": "LoginStepDefinitions.iTypeInTheFieldUsername(String)"
+            },
+            "keyword": "When "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Complete"
+          },
+          {
+            "name": "@test"
+          }
+        ]
+      }
+    ],
+    "name": "Login Automation Test",
+    "description": "  Login Test for prepaid and postpaid users",
+    "id": "login-automation-test",
+    "keyword": "Feature",
+    "uri": "src/test/resources/features/login.feature",
+    "tags": [
+      {
+        "name": "@Complete",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
